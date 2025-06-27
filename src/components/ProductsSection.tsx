@@ -2,7 +2,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, HardHat, Eye, Wrench, Zap, Star } from "lucide-react";
+import { Shield, HardHat, Eye, Wrench, Zap, Star, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductsSection = () => {
   const products = [
@@ -202,13 +203,16 @@ const ProductsSection = () => {
                     )}
                   </div>
                   
-                  <Button
-                    size="sm"
-                    className={`${product.inStock ? 'bg-primary hover:bg-electric-700' : 'bg-steel-400'}`}
-                    disabled={!product.inStock}
-                  >
-                    {product.inStock ? 'В корзину' : 'Под заказ'}
-                  </Button>
+                  <Link to="/contacts">
+                    <Button
+                      size="sm"
+                      className={`${product.inStock ? 'bg-primary hover:bg-electric-700' : 'bg-steel-400'}`}
+                      disabled={!product.inStock}
+                    >
+                      <Phone className="h-4 w-4 mr-1" />
+                      {product.inStock ? 'Заказать' : 'Узнать цену'}
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

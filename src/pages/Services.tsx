@@ -3,9 +3,16 @@ import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Zap, Shield, FileCheck, Wrench, Clock, Phone, CheckCircle } from "lucide-react";
+import { Zap, Shield, FileCheck, Wrench, CheckCircle } from "lucide-react";
 
 const Services = () => {
+  const scrollToForm = () => {
+    const formElement = document.getElementById('consultation-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
       id: 1,
@@ -151,7 +158,10 @@ const Services = () => {
                       <div className="text-sm text-steel-500">
                         Работы по {service.gost}
                       </div>
-                      <Button className="bg-primary hover:bg-electric-700">
+                      <Button 
+                        className="bg-primary hover:bg-electric-700"
+                        onClick={scrollToForm}
+                      >
                         Заказать услугу
                       </Button>
                     </div>
@@ -163,47 +173,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Emergency Service */}
-      <section className="py-16 bg-steel-50">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-electric-600 to-electric-700 rounded-2xl p-8 lg:p-12 text-white">
-            <div className="max-w-4xl mx-auto text-center">
-              <Clock className="h-16 w-16 mx-auto mb-6" />
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                Экстренные выезды 24/7
-              </h2>
-              <p className="text-xl text-electric-100 mb-8 leading-relaxed">
-                Аварийные ситуации требуют немедленного реагирования. Наши специалисты 
-                готовы выехать на объект в любое время суток для проведения срочных измерений 
-                и устранения неисправностей.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div>
-                  <div className="text-3xl font-bold mb-2">2 часа</div>
-                  <div className="text-electric-200">Время выезда в экстренных случаях</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">24/7</div>
-                  <div className="text-electric-200">Круглосуточная диспетчерская</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">100%</div>
-                  <div className="text-electric-200">Готовность к выезду</div>
-                </div>
-              </div>
-
-              <Button size="lg" className="bg-white text-primary hover:bg-electric-50">
-                <Phone className="mr-2 h-5 w-5" />
-                Экстренный вызов: +7 (495) 999-99-99
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form */}
-      <section className="py-16 bg-white">
+      <section id="consultation-form" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">

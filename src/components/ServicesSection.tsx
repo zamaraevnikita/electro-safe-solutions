@@ -2,6 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Shield, FileCheck, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   const services = [
@@ -84,9 +85,11 @@ const ServicesSection = () => {
                     ))}
                   </ul>
                   
-                  <Button className="w-full mt-4" variant="outline">
-                    Заказать услугу
-                  </Button>
+                  <Link to="/services">
+                    <Button className="w-full mt-4" variant="outline">
+                      Заказать услугу
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             );

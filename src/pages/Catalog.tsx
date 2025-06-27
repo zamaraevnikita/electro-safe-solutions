@@ -1,12 +1,12 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Shield, Star, Search, Filter, ShoppingCart } from "lucide-react";
+import { Shield, Star, Search, Filter, Phone } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -325,14 +325,12 @@ const Catalog = () => {
                         )}
                       </div>
                       
-                      <Button
-                        size="sm"
-                        className={`${product.inStock ? 'bg-primary hover:bg-electric-700' : 'bg-steel-400'}`}
-                        disabled={!product.inStock}
-                      >
-                        <ShoppingCart className="h-4 w-4 mr-1" />
-                        {product.inStock ? 'В корзину' : 'Под заказ'}
-                      </Button>
+                      <Link to="/contacts">
+                        <Button size="sm" className="bg-primary hover:bg-electric-700">
+                          <Phone className="h-4 w-4 mr-1" />
+                          Заказать
+                        </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>

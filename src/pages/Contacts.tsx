@@ -171,19 +171,6 @@ const Contacts = () => {
                 })}
               </div>
 
-              {/* Additional Info */}
-              <div className="bg-gradient-to-r from-primary to-electric-600 rounded-2xl p-6 text-white">
-                <h3 className="text-xl font-bold mb-3">Экстренные вызовы</h3>
-                <p className="text-electric-100 mb-4">
-                  В случае аварийной ситуации наши специалисты готовы выехать 
-                  на объект в кратчайшие сроки.
-                </p>
-                <div className="flex items-center space-x-2">
-                  <Phone className="h-5 w-5" />
-                  <span className="font-semibold">+7 (495) 999-99-99</span>
-                </div>
-              </div>
-
               {/* Map placeholder */}
               <div className="bg-steel-100 rounded-2xl p-6 text-center">
                 <MapPin className="h-12 w-12 text-steel-400 mx-auto mb-3" />
