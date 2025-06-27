@@ -123,7 +123,7 @@ const ProductsSection = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 bg-white border-steel-200 overflow-hidden">
               <div className="relative">
@@ -213,28 +213,6 @@ const ProductsSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto border border-steel-200">
-            <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-steel-900 mb-2">
-              Нужна помощь в выборе СИЗ?
-            </h3>
-            <p className="text-steel-600 mb-6">
-              Наши специалисты помогут подобрать средства защиты под ваши задачи 
-              и требования безопасности.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-electric-700">
-                Получить консультацию
-              </Button>
-              <Button size="lg" variant="outline" className="border-steel-300">
-                Скачать каталог (PDF)
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

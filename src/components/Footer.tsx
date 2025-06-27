@@ -15,7 +15,7 @@ const Footer = () => {
                 <Zap className="h-4 w-4 text-electric-300 absolute -top-1 -right-1" />
               </div>
               <div>
-                <span className="text-lg font-bold">ЭлектроБезопасность</span>
+                <span className="text-lg font-bold">СибЭнергоКомплекс</span>
                 <p className="text-xs text-steel-400">Лаборатория и СИЗ</p>
               </div>
             </div>
@@ -72,7 +72,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Mail className="h-4 w-4 text-electric-400 mt-0.5" />
                 <div>
-                  <p className="text-white">info@elektrosafety.ru</p>
+                  <p className="text-white">info@sibenergocomplex.ru</p>
                   <p className="text-steel-400 text-sm">Ответим в течение часа</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="text-steel-400 text-sm">
-              © 2024 ЭлектроБезопасность. Все права защищены.
+              © 2024 СибЭнергоКомплекс. Все права защищены.
             </div>
             <div className="flex space-x-4 text-sm">
               <Link to="/privacy" className="text-steel-400 hover:text-electric-300 transition-colors">

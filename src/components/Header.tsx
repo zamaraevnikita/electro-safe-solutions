@@ -30,7 +30,7 @@ const Header = () => {
               <Zap className="h-4 w-4 text-electric-500 absolute -top-1 -right-1" />
             </div>
             <div>
-              <span className="text-xl font-bold text-steel-800">ЭлектроБезопасность</span>
+              <span className="text-xl font-bold text-steel-800">СибЭнергоКомплекс</span>
               <p className="text-xs text-steel-600 leading-none">Лаборатория и СИЗ</p>
             </div>
           </Link>

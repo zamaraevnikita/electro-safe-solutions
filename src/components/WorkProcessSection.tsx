@@ -2,6 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Calendar, FileCheck, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const WorkProcessSection = () => {
   const steps = [
@@ -111,18 +112,17 @@ const WorkProcessSection = () => {
             Наши специалисты ответят на все ваши вопросы.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-electric-50">
-              <Phone className="mr-2 h-5 w-5" />
-              Позвонить сейчас
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-              Оставить заявку онлайн
-            </Button>
+          <div className="flex justify-center">
+            <Link to="/contacts">
+              <Button size="lg" className="bg-white text-primary hover:bg-electric-50">
+                <Phone className="mr-2 h-5 w-5" />
+                Связаться с нами
+              </Button>
+            </Link>
           </div>
           
           <div className="mt-6 text-electric-200 text-sm">
-            ☎️ +7 (495) 999-99-99 • 📧 info@elektrosafety.ru • Работаем 24/7
+            ☎️ +7 (495) 999-99-99 • 📧 info@sibenergocomplex.ru • Работаем 24/7
           </div>
         </div>
       </div>
