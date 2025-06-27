@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Shield, FileCheck, Wrench, Clock, MapPin } from "lucide-react";
+import { Zap, Shield, FileCheck, Wrench } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
@@ -48,7 +48,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -91,31 +91,6 @@ const ServicesSection = () => {
               </Card>
             );
           })}
-        </div>
-
-        {/* Emergency Call Section */}
-        <div className="bg-gradient-to-r from-electric-600 to-electric-700 rounded-2xl p-8 text-white text-center">
-          <div className="max-w-2xl mx-auto">
-            <div className="flex justify-center mb-4">
-              <div className="p-4 bg-white/20 rounded-full">
-                <Clock className="h-8 w-8" />
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold mb-2">Экстренный вызов 24/7</h3>
-            <p className="text-electric-100 mb-6">
-              Аварийные ситуации не ждут. Наши специалисты выезжают в любое время суток 
-              для устранения неисправностей и проведения срочных измерений.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-5 w-5" />
-                <span>Выезд по Москве и области</span>
-              </div>
-              <Button size="lg" className="bg-white text-electric-600 hover:bg-electric-50">
-                Вызвать специалиста
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

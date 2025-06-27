@@ -40,9 +40,7 @@ const Footer = () => {
               <li><Link to="/services" className="text-steel-300 hover:text-electric-300 transition-colors">Услуги лаборатории</Link></li>
               <li><Link to="/catalog" className="text-steel-300 hover:text-electric-300 transition-colors">Каталог СИЗ</Link></li>
               <li><Link to="/about" className="text-steel-300 hover:text-electric-300 transition-colors">О компании</Link></li>
-              <li><Link to="/blog" className="text-steel-300 hover:text-electric-300 transition-colors">Блог</Link></li>
-              <li><Link to="/faq" className="text-steel-300 hover:text-electric-300 transition-colors">Вопросы и ответы</Link></li>
-              <li><Link to="/profile" className="text-steel-300 hover:text-electric-300 transition-colors">Личный кабинет</Link></li>
+              <li><Link to="/contacts" className="text-steel-300 hover:text-electric-300 transition-colors">Контакты</Link></li>
             </ul>
           </div>
 

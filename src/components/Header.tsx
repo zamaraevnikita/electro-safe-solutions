@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Zap, Shield, Phone } from "lucide-react";
+import { Menu, Zap, Shield, Phone } from "lucide-react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,8 +14,6 @@ const Header = () => {
     { name: "Услуги", href: "/services" },
     { name: "Каталог", href: "/catalog" },
     { name: "О компании", href: "/about" },
-    { name: "Блог", href: "/blog" },
-    { name: "FAQ", href: "/faq" },
     { name: "Контакты", href: "/contacts" }
   ];
 
@@ -63,12 +61,6 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               <span className="font-medium">+7 (495) 999-99-99</span>
             </a>
-            
-            <Link to="/profile">
-              <Button variant="outline" size="sm" className="hidden sm:inline-flex">
-                Личный кабинет
-              </Button>
-            </Link>
 
             {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -93,11 +85,6 @@ const Header = () => {
                       {item.name}
                     </Link>
                   ))}
-                  <div className="border-t border-steel-200 pt-4">
-                    <Link to="/profile" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full">Личный кабинет</Button>
-                    </Link>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

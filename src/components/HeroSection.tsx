@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Shield, Zap, CheckCircle, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -77,13 +78,17 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-electric-700 text-white px-8">
-                Получить консультацию
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-steel-300">
-                Посмотреть услуги
-              </Button>
+              <Link to="/contacts">
+                <Button size="lg" className="bg-primary hover:bg-electric-700 text-white px-8">
+                  Получить консультацию
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button size="lg" variant="outline" className="border-steel-300">
+                  Посмотреть услуги
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -137,7 +142,6 @@ const HeroSection = () => {
                     <SelectItem value="service">Услуги электролаборатории</SelectItem>
                     <SelectItem value="equipment">Покупка СИЗ</SelectItem>
                     <SelectItem value="consultation">Консультация</SelectItem>
-                    <SelectItem value="emergency">Экстренный вызов</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
