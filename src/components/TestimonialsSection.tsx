@@ -2,64 +2,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Star, Quote } from "lucide-react";
+import { useTestimonials } from "@/hooks/useTestimonials";
 
 const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Михаил Петров",
-      position: "Главный энергетик",
-      company: "ПАО «Московский завод»",
-      rating: 5,
-      text: "Работаем с ЭлектроБезопасность уже 3 года. Отличные специалисты, всегда выезжают в срок. Протоколы оформляют качественно, никаких проблем с проверяющими органами не было.",
-      initials: "МП"
-    },
-    {
-      id: 2,
-      name: "Анна Сидорова",
-      position: "Инженер по охране труда",
-      company: "ООО «Стройкомплекс»",
-      rating: 5,
-      text: "Заказывали СИЗ для наших электриков. Качество товаров на высоте, все сертификаты в порядке. Доставили быстро, цены адекватные. Рекомендую для промышленных предприятий.",
-      initials: "АС"
-    },
-    {
-      id: 3,
-      name: "Владимир Козлов",
-      position: "Технический директор",
-      company: "ЗАО «Энергопром»",
-      rating: 5,
-      text: "Вызывали для экстренного измерения после аварии. Приехали через час, работали оперативно. Помогли быстро запустить производство. Профессиональный подход к делу.",
-      initials: "ВК"
-    },
-    {
-      id: 4,
-      name: "Елена Романова",
-      position: "Специалист по закупкам",
-      company: "ОАО «Машиностроитель»",
-      rating: 4,
-      text: "Покупаем у них диэлектрические перчатки и боты регулярно. Хорошее качество, своевременная поставка. Немного дороже конкурентов, но качество того стоит.",
-      initials: "ЕР"
-    },
-    {
-      id: 5,
-      name: "Игорь Васильев",
-      position: "Электрик 5 разряда",
-      company: "ООО «Электромонтаж»",
-      rating: 5,
-      text: "Как электрик с 15-летним стажем могу сказать - это настоящие профессионалы. Работают аккуратно, знают все нормы и требования. Рекомендую коллегам.",
-      initials: "ИВ"
-    },
-    {
-      id: 6,
-      name: "Сергей Николаев",
-      position: "Руководитель службы эксплуатации",
-      company: "ПАО «ЭнергоСеть»",
-      rating: 5,
-      text: "Заключили договор на годовое обслуживание электрооборудования. Выезжают по графику, работают качественно. За год ни одной претензии. Планируем продлевать сотрудничество.",
-      initials: "СН"
-    }
-  ];
+  const { data: testimonials, isLoading } = useTestimonials();
+
+  if (isLoading) return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 text-center text-steel-600">Загрузка отзывов...</div>
+    </section>
+  );
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
     <section className="py-16 bg-white">
@@ -89,14 +42,14 @@ const TestimonialsSection = () => {
                     <Star
                       key={index}
                       className={`h-4 w-4 ${
-                        index < testimonial.rating
+                        index < (testimonial.rating || 5)
                           ? 'fill-yellow-400 text-yellow-400'
                           : 'text-steel-300'
                       }`}
                     />
                   ))}
                   <span className="text-sm text-steel-500 ml-2">
-                    {testimonial.rating}.0
+                    {(testimonial.rating || 5).toFixed(1)}
                   </span>
                 </div>
 
@@ -109,12 +62,12 @@ const TestimonialsSection = () => {
                 <div className="flex items-center space-x-3 pt-4 border-t border-steel-100">
                   <Avatar className="h-12 w-12 bg-primary text-white">
                     <AvatarFallback className="bg-primary text-white font-semibold">
-                      {testimonial.initials}
+                      {testimonial.initials || (testimonial.author ? testimonial.author.split(' ').map(w => w[0]).join('').toUpperCase() : '?')}
                     </AvatarFallback>
                   </Avatar>
                   <div>
                     <div className="font-semibold text-steel-900">
-                      {testimonial.name}
+                      {testimonial.author || testimonial.name}
                     </div>
                     <div className="text-sm text-steel-600">
                       {testimonial.position}

@@ -1,10 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Shield, Zap, CheckCircle, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +14,24 @@ const HeroSection = () => {
     requestType: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you would typically send the data to your backend
+    const { name, phone, email, requestType } = formData;
+    const { error } = await supabase.from("applications").insert([
+      { name, phone, email, request_type: requestType }
+    ]);
+    if (error) {
+      console.error("Ошибка при отправке заявки:", error.message);
+      alert("Ошибка при отправке заявки. Попробуйте позже.");
+    } else {
+      alert("Заявка успешно отправлена!");
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        requestType: ""
+      });
+    }
   };
 
   return (
@@ -46,11 +60,20 @@ const HeroSection = () => {
                 </span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-steel-900 leading-tight">
-                Комплексные решения по{" "}
-                <span className="text-primary relative">
-                  электробезопасности
-                  <Zap className="absolute -top-2 -right-8 h-8 w-8 text-electric-500" />
+              <h1 className="text-3xl lg:text-6xl font-bold text-steel-900 leading-tight">
+                {/* Мобильный вариант: три строки */}
+                <span className="block sm:hidden">
+                  Комплексные<br />
+                  решения по<br />
+                  <span className="text-primary relative">электробезопасности
+                    <Zap className="absolute -top-2 -right-8 h-8 w-8 text-electric-500" />
+                  </span>
+                </span>
+                {/* Десктопный вариант: всё в одну строку */}
+                <span className="hidden sm:inline">
+                  Комплексные решения по <span className="text-primary relative">электробезопасности
+                    <Zap className="absolute -top-2 -right-8 h-8 w-8 text-electric-500" />
+                  </span>
                 </span>
               </h1>
               

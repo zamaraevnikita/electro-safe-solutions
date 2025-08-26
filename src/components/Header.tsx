@@ -3,11 +3,16 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, Shield, Phone } from "lucide-react";
+import { Menu, Zap, Shield, Phone, ShoppingCart } from "lucide-react";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useCart } from "@/hooks/CartContext";
+import CartModalContent from "./CartModalContent";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { cart } = useCart();
+  const [open, setOpen] = useState(false);
 
   const navigation = [
     { name: "Главная", href: "/" },
@@ -53,14 +58,33 @@ const Header = () => {
           </nav>
 
           {/* Contact Button & Mobile Menu */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center gap-4">
             <a
               href="tel:+74959999999"
               className="hidden lg:flex items-center space-x-2 text-steel-700 hover:text-primary transition-colors"
             >
               <Phone className="h-4 w-4" />
-              <span className="font-medium">+7 (495) 999-99-99</span>
+              <span className="font-medium">+7 (999) 999-99-99</span>
             </a>
+
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" className="relative">
+                  <ShoppingCart className="w-6 h-6" />
+                  {cart.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-white rounded-full text-xs px-1">
+                      {cart.length}
+                    </span>
+                  )}
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Ваша корзина</DialogTitle>
+                </DialogHeader>
+                <CartModalContent />
+              </DialogContent>
+            </Dialog>
 
             {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>

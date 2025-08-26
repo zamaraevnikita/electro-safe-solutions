@@ -1,34 +1,14 @@
-
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { useState } from "react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import ApplicationForm from "@/components/ApplicationForm";
 
 const Contacts = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    company: "",
-    requestType: "",
-    message: ""
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    // Here you would typically send the data to your backend
-  };
-
   const contactInfo = [
     {
       icon: Phone,
       title: "Телефон",
-      content: "+7 (495) 999-99-99",
+      content: "+7 (999) 999-99-99",
       subtitle: "Круглосуточно для экстренных вызовов"
     },
     {
@@ -40,7 +20,7 @@ const Contacts = () => {
     {
       icon: MapPin,
       title: "Адрес",
-      content: "г. Москва, ул. Промышленная, 15",
+      content: "г. Томск, где-то",
       subtitle: "Офис и лаборатория"
     },
     {
@@ -66,85 +46,39 @@ const Contacts = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-steel-200">
-              <h2 className="text-2xl font-bold text-steel-900 mb-6">
-                Оставить заявку
-              </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Ваше имя *"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="h-12"
-                    required
-                  />
-                  <Input
-                    placeholder="Название компании"
-                    value={formData.company}
-                    onChange={(e) => setFormData({...formData, company: e.target.value})}
-                    className="h-12"
-                  />
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+            {/* Contact Form + Нам доверяют */}
+            <div className="flex flex-col h-full">
+              <ApplicationForm 
+                title="Оставить заявку"
+                description="Оставьте заявку и наш специалист свяжется с вами в течение 30 минут"
+              />
+              {/* Блок "Нам доверяют" */}
+              <div className="mt-8 bg-white rounded-2xl shadow-xl p-8 border border-steel-200 h-full flex flex-col justify-center min-h-[350px]">
+                <h3 className="text-xl font-bold text-center mb-6">Нам доверяют</h3>
+                <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-center justify-items-center">
+                  <div className="flex flex-col items-center">
+                    <img src="/partners/tomsknipineft.png" alt="ТомскНИПИнефть" loading="lazy" className="max-h-[120px] object-contain mb-2" />
+                    <span className="text-sm text-steel-800 text-center font-medium">ТомскНИПИнефть</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <img src="/partners/tomskenergosbyt.png" alt="Томскэнергосбыт" loading="lazy" className="max-h-[120px] object-contain mb-2" />
+                    <span className="text-sm text-steel-800 text-center font-medium">Томскэнергосбыт</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <img src="/partners/rosneft.png" alt="Роснефть" loading="lazy" className="max-h-[120px] object-contain mb-2" />
+                    <span className="text-sm text-steel-800 text-center font-medium">Роснефть</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <img src="/partners/sibagro.png" alt="Сибагро" loading="lazy" className="max-h-[120px] object-contain mb-2" />
+                    <span className="text-sm text-steel-800 text-center font-medium">Сибагро</span>
+                  </div>
                 </div>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="Телефон *"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="h-12"
-                    required
-                  />
-                  <Input
-                    placeholder="Email *"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="h-12"
-                    required
-                  />
-                </div>
-                
-                <Select onValueChange={(value) => setFormData({...formData, requestType: value})}>
-                  <SelectTrigger className="h-12">
-                    <SelectValue placeholder="Тип запроса" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="service">Услуги электролаборатории</SelectItem>
-                    <SelectItem value="equipment">Покупка СИЗ</SelectItem>
-                    <SelectItem value="consultation">Консультация</SelectItem>
-                    <SelectItem value="technical">Техническое обслуживание</SelectItem>
-                    <SelectItem value="other">Другое</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                <Textarea
-                  placeholder="Опишите ваш запрос подробнее..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="min-h-[120px]"
-                />
-                
-                <Button type="submit" className="w-full h-12 bg-primary hover:bg-electric-700">
-                  <Send className="mr-2 h-5 w-5" />
-                  Отправить заявку
-                </Button>
-                
-                <p className="text-xs text-steel-500 text-center">
-                  Нажимая кнопку, вы соглашаетесь с{" "}
-                  <a href="/privacy" className="text-primary hover:underline">
-                    политикой конфиденциальности
-                  </a>
-                </p>
-              </form>
+              </div>
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6">
+            <div className="space-y-6 h-full flex flex-col">
               <h2 className="text-2xl font-bold text-steel-900 mb-6">
                 Контактная информация
               </h2>
@@ -171,12 +105,19 @@ const Contacts = () => {
                 })}
               </div>
 
-              {/* Map placeholder */}
-              <div className="bg-steel-100 rounded-2xl p-6 text-center">
-                <MapPin className="h-12 w-12 text-steel-400 mx-auto mb-3" />
-                <p className="text-steel-600">
-                  Интерактивная карта будет добавлена
-                </p>
+              {/* Map - wide, no card, no extra padding */}
+              <div className="flex-1 flex flex-col justify-end">
+                <div className="rounded-2xl overflow-hidden shadow-lg mt-4">
+                  <iframe
+                    src="https://yandex.ru/map-widget/v1/?ll=85.016307%2C56.519119&z=16&pt=85.016307,56.519119,pm2rdm"
+                    width="100%"
+                    height="350"
+                    frameBorder="0"
+                    allowFullScreen
+                    title="Яндекс Карта"
+                    style={{ minHeight: 300, display: "block" }}
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
